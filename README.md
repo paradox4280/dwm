@@ -20,6 +20,7 @@ necessary as root):
 
 Patches applied
 ---------------
+- [dwm-fullgaps-6.4.diff](https://dwm.suckless.org/patches/fullgaps/)
 
 Running dwm
 -----------
