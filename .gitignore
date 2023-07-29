@@ -53,3 +53,5 @@ dkms.conf
 
 # Miscellaneous files
 *.diff
+*.orig
+config.h

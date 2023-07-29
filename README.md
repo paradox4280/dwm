@@ -21,6 +21,8 @@ necessary as root):
 Patches applied
 ---------------
 - [dwm-fullgaps-6.4.diff](https://dwm.suckless.org/patches/fullgaps/)
+- [dwm-alwayscenter-20200625-f04cac6.diff](https://dwm.suckless.org/patches/alwayscenter/)
+- [dwm-systray-6.4.diff](https://dwm.suckless.org/patches/systray/)
 
 Running dwm
 -----------
@@ -40,7 +42,7 @@ like this in your .xinitrc:
 
     while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
     do
-    	sleep 1
+        sleep 1
     done &
     exec dwm
 
