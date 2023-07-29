@@ -56,3 +56,4 @@ dkms.conf
 *.diff
 *.orig
 config.h
+dwm
