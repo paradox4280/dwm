@@ -20,9 +20,10 @@ necessary as root):
 
 Patches applied
 ---------------
-- [dwm-fullgaps-6.4.diff](https://dwm.suckless.org/patches/fullgaps/)
-- [dwm-alwayscenter-20200625-f04cac6.diff](https://dwm.suckless.org/patches/alwayscenter/)
 - [dwm-systray-6.4.diff](https://dwm.suckless.org/patches/systray/)
+- [dwm-fullgaps-6.4.diff](https://dwm.suckless.org/patches/fullgaps/)
+- [dwm-autostart-20210120-cb3f58a.diff](https://dwm.suckless.org/patches/autostart/)
+- [dwm-alwayscenter-20200625-f04cac6.diff](https://dwm.suckless.org/patches/alwayscenter/)
 
 Running dwm
 -----------
