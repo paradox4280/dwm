@@ -52,6 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Miscellaneous files
+*.rej
 *.diff
 *.orig
 config.h
