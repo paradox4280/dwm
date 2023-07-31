@@ -12,10 +12,10 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-    "HurmitNerdFontMono:size=14",
-    "monospace:size=14"
+    "HurmitNerdFontMono:bold:pixelsize=16",
+    "monospace:bold:pixelsize=16"
 };
-static const char dmenufont[]       = "monospace:size=14";
+static const char dmenufont[]       = "HurmitNerdFontMono:bold:pixelsize=16";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -36,6 +36,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
+    { "feh",      NULL,       NULL,       0,            1,           -1 },
+    { "mpv",      NULL,       NULL,       0,            1,           -1 },
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
@@ -67,8 +69,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-c", "-l", "10", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *utils[] = { "$HOME/scripts/system.sh", NULL };
+static const char *virtual_manchine[] = { "$HOME/scripts/start-virtual-machine.py", NULL };
+static const char *clipmenu[] = { "clipmenu", "-c", NULL };
+static const char *clipdel[] = { "clipdel", "-d", ".*", NULL };
+
+/* apps */
 static const char *browser[] = { "firefox", NULL };
 static const char *file_manager[] = { "pcmanfm", NULL };
 
@@ -78,6 +86,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { ALTKEY,                       XK_f,      spawn,          {.v = browser } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = file_manager } },
+    { ControlMask|ALTKEY,           XK_s,      spawn,          {.v = utils } },
+    { ControlMask|ALTKEY,           XK_v,      spawn,          {.v = virtual_manchine } },
+    { MODKEY,                       XK_v,      spawn,          {.v = clipmenu } },
+    { MODKEY|ControlMask,           XK_v,      spawn,          {.v = clipdel } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -87,7 +99,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ ControlMask|ALTKEY,           XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
